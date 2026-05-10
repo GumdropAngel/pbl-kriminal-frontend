@@ -1,40 +1,215 @@
-# Environment
+# ═══════════════════════════════════════════════════════════════
+#  SIPEDULI — Crime Reporting System
+#  .gitignore — dioptimasi untuk kolaborasi tim 3 orang
+#
+#  ATURAN UMUM:
+#  ✅ Di-commit  → source code, config template, schema, docs
+#  ❌ Di-ignore  → credentials, venv, node_modules, build, model besar
+# ═══════════════════════════════════════════════════════════════
+
+
+# ───────────────────────────────────────────────────────────────
+#  RAHASIA & ENVIRONMENT VARIABLES
+#  Jangan pernah commit .env ke GitHub — gunakan .env.example
+# ───────────────────────────────────────────────────────────────
 .env
 .env.local
+.env.*.local
+.env.development
 .env.production
+.env.staging
+.env.test
 
-# Python
+# Kunci & sertifikat
+*.pem
+*.key
+*.crt
+*.p12
+
+
+# ───────────────────────────────────────────────────────────────
+#  PYTHON — VIRTUAL ENVIRONMENT
+#  Tiap anggota tim buat venv sendiri dari requirements.txt
+# ───────────────────────────────────────────────────────────────
+venv/
+venv*/
+.venv/
+env/
+ENV/
+.virtualenv/
+
+# Cache & bytecode Python
 __pycache__/
 *.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
+# Packaging & distribusi
+*.egg
 *.egg-info/
-.venv/
-venv/
 dist/
 build/
-*.egg
+.eggs/
+MANIFEST
+*.so
+*.whl
 
-# ML artifacts
+# ───────────────────────────────────────────────────────────────
+#  PYTHON — TOOLS & TESTING
+# ───────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+
+# ───────────────────────────────────────────────────────────────
+#  MACHINE LEARNING — MODEL ARTIFACTS
+#  Model di-regenerate dari training script, bukan di-share via git
+#  Gunakan MLflow atau shared storage (Google Drive/S3) untuk distribusi
+# ───────────────────────────────────────────────────────────────
 backend/ml/models/*.pkl
 backend/ml/models/*.joblib
+backend/ml/models/*.h5
+backend/ml/models/*.pt
+backend/ml/models/*.pth
+backend/ml/models/*.onnx
+backend/ml/models/*.bin
+
+# MLflow tracking lokal
+mlflow.db
+mlruns/
 mlflow/
 
-# Node / Next.js
-frontend/node_modules/
-frontend/.next/
-frontend/out/
 
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-
-# Notebooks checkpoints
-.ipynb_checkpoints/
-
-# Data (jangan commit CSV besar ke git)
+# ───────────────────────────────────────────────────────────────
+#  DATA — FILE BESAR
+#  Simpan dataset di shared storage, bukan di git
+#  (GitHub limit 100MB per file, repo jadi berat)
+# ───────────────────────────────────────────────────────────────
 data/*.csv
 data/*.parquet
+data/*.xlsx
+data/*.xls
+data/*.json
+data/*.zip
+data/*.tar.gz
+
+
+# ───────────────────────────────────────────────────────────────
+#  NODE.JS / NEXT.JS
+#  Tiap anggota tim jalankan "npm install" sendiri dari package.json
+# ───────────────────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# Build output Next.js
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Env lokal Next.js
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Cache npm/yarn
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
+*.tsbuildinfo
+
+
+# ───────────────────────────────────────────────────────────────
+#  DATABASE & STORAGE LOKAL
+# ───────────────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker named volumes (tidak perlu di-track)
+postgres_data/
+mlflow_artifacts/
+model_artifacts/
+
+
+# ───────────────────────────────────────────────────────────────
+#  JUPYTER NOTEBOOKS
+#  Notebook (.ipynb) di-commit, tapi checkpoint-nya tidak
+# ───────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+
+# ───────────────────────────────────────────────────────────────
+#  LOG FILES
+# ───────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pip-log.txt
+
+
+# ───────────────────────────────────────────────────────────────
+#  OS — SYSTEM FILES
+# ───────────────────────────────────────────────────────────────
+# macOS
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+
+# ───────────────────────────────────────────────────────────────
+#  IDE — EDITOR FILES
+#  Settings personal tidak di-commit, tapi rekomendasi ekstensi boleh
+# ───────────────────────────────────────────────────────────────
+# JetBrains (PyCharm, WebStorm)
+.idea/
+
+# Vim/Nano
+*.swp
+*.swo
+
+# VS Code — ignore settings personal, tapi keep rekomendasi ekstensi
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+
+# ───────────────────────────────────────────────────────────────
+#  TEMPORARY FILES
+# ───────────────────────────────────────────────────────────────
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+tmp/
+temp/
