@@ -1,0 +1,223 @@
+/* Tailwind v4 — ganti @tailwind directives dengan @import */
+@import "tailwindcss";
+
+/* ============================================================
+   CUSTOM THEME (v4: wajib di sini, bukan di tailwind.config.ts)
+   ============================================================ */
+@theme {
+  --color-ink:   #0a0a0a;
+  --color-alert: #cc0000;
+
+  --font-family-sans: var(--font-inter), system-ui, sans-serif;
+  --font-family-mono: var(--font-jetbrains), ui-monospace, monospace;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html,
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  color: #0a0a0a;
+  background: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  border-radius: 0;
+}
+
+.r4   { border-radius: 4px; }
+.mono { font-family: var(--font-jetbrains), ui-monospace, monospace; }
+
+:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 2px;
+}
+
+input::placeholder { color: #9ca3af; }
+
+/* ============================================================
+   REVEAL ANIMATION SYSTEM
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.in          { opacity: 1; transform: translateY(0); }
+.reveal.up          { transform: translateY(28px); }
+.reveal.down        { transform: translateY(-18px); }
+.reveal.left        { transform: translateX(-22px); }
+.reveal.right       { transform: translateX(22px); }
+.reveal.scale       { transform: scale(0.96); }
+.reveal.in.up,
+.reveal.in.down     { transform: translateY(0); }
+.reveal.in.left,
+.reveal.in.right    { transform: translateX(0); }
+.reveal.in.scale    { transform: scale(1); }
+
+/* ============================================================
+   HERO ENTRANCE
+   ============================================================ */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.heroAnim > * {
+  opacity: 0;
+  animation: heroIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.heroAnim > *:nth-child(1) { animation-delay: 0.05s; }
+.heroAnim > *:nth-child(2) { animation-delay: 0.18s; }
+.heroAnim > *:nth-child(3) { animation-delay: 0.32s; }
+.heroAnim > *:nth-child(4) { animation-delay: 0.46s; }
+.heroAnim > *:nth-child(5) { animation-delay: 0.58s; }
+.heroAnim > *:nth-child(6) { animation-delay: 0.70s; }
+
+/* ============================================================
+   HEADER DROP
+   ============================================================ */
+@keyframes headerDrop {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+.headerDrop { animation: headerDrop 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* ============================================================
+   LIVE TICKET PULSE
+   ============================================================ */
+@keyframes livePulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  50%  { transform: scale(1.6); opacity: 0.35; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.livePulse {
+  animation: livePulse 1.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* ============================================================
+   TICKET SLIDE IN
+   ============================================================ */
+@keyframes ticketIn {
+  from { opacity: 0; transform: translateY(-10px); background: #fff5f5; }
+  to   { opacity: 1; transform: translateY(0);     background: #ffffff; }
+}
+.ticketIn { animation: ticketIn 0.6s ease-out both; }
+
+/* ============================================================
+   STEP NUMBER FLIP
+   ============================================================ */
+@keyframes stepFlip {
+  from { opacity: 0; transform: translateY(40px) rotateX(-30deg); }
+  to   { opacity: 1; transform: translateY(0)    rotateX(0); }
+}
+.reveal.in .stepFlip {
+  animation: stepFlip 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* ============================================================
+   RED LABEL UNDERLINE GROW
+   ============================================================ */
+.redLabel { position: relative; display: inline-block; }
+.redLabel::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -8px;
+  height: 2px;
+  background: #cc0000;
+  width: 0;
+  transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s;
+}
+.reveal.in .redLabel::after,
+.heroAnim  .redLabel::after { width: 100%; }
+
+/* ============================================================
+   CARD HOVER LIFT
+   ============================================================ */
+.lift {
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+              box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -16px rgba(0, 0, 0, 0.18);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+button, a {
+  transition: background-color 0.2s ease, color 0.2s ease,
+              border-color 0.2s ease, transform 0.2s ease;
+}
+.btnPress:active { transform: translateY(1px); }
+
+/* ============================================================
+   TIMELINE PROGRESS BAR
+   ============================================================ */
+.tlBar {
+  position: absolute;
+  left: 0; top: 50%;
+  height: 2px;
+  background: #0a0a0a;
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in .tlBar { transform: scaleX(var(--tl, 0)); }
+
+/* ============================================================
+   ACTIVE TIMELINE DOT PULSE
+   ============================================================ */
+@keyframes ringPulse {
+  0%   { box-shadow: 0 0 0 0    rgba(204, 0, 0, 0.55); }
+  70%  { box-shadow: 0 0 0 14px rgba(204, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0    rgba(204, 0, 0, 0); }
+}
+.ringPulse { animation: ringPulse 1.8s ease-out infinite; }
+
+/* ============================================================
+   FAQ COLLAPSE
+   ============================================================ */
+.faqBody {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.2, 0.7, 0.2, 1),
+              opacity 0.35s ease;
+  opacity: 0;
+}
+.faqBody.open  { grid-template-rows: 1fr; opacity: 1; }
+.faqBody > div { overflow: hidden; }
+
+/* ============================================================
+   BLINK / EMERGENCY NUMBER PULSE
+   ============================================================ */
+@keyframes blink {
+  0%, 60% { opacity: 1; }
+  80%      { opacity: 0.35; }
+  100%     { opacity: 1; }
+}
+.blink { animation: blink 1.6s ease-in-out infinite; }
+
+@keyframes numPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.02); }
+}
+.numPulse {
+  animation: numPulse 3.2s ease-in-out infinite;
+  transform-origin: left center;
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
