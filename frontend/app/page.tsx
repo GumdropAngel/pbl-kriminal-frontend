@@ -871,8 +871,16 @@ function Footer() {
 
       <div className="border-t border-white/15">
         <div className="max-w-[1240px] mx-auto px-6 py-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
-          <div className="mono text-[11px] uppercase tracking-[0.16em] text-white/50">
-            © 2025 SIPEDULI · Sistem Pelaporan Kejahatan Terpadu · Republik Indonesia
+          <div>
+            <div className="mono text-[11px] uppercase tracking-[0.16em] text-white/50">
+              © 2025 SIPEDULI · Sistem Pelaporan Kejahatan Terpadu · Republik Indonesia
+            </div>
+            <a
+              href="/admin/login"
+              className="mono text-[11px] uppercase tracking-[0.16em] text-white/30 hover:text-white/60 mt-1 inline-block"
+            >
+              Portal Petugas →
+            </a>
           </div>
           <div className="mono text-[11px] uppercase tracking-[0.16em] text-white/50">
             VERSI 2.4.1 · STATUS: OPERASIONAL

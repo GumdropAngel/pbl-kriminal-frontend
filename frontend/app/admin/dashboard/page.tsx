@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 import './dashboard.css'
 
 /* ============================================================
@@ -225,7 +226,7 @@ function Sidebar({ active, onChange }: { active: NavKey; onChange: (k: NavKey) =
 /* ============================================================
    TOPBAR
    ============================================================ */
-function TopBar({ active }: { active: NavKey }) {
+function TopBar({ active, onLogout }: { active: NavKey; onLogout: () => void }) {
   const [notifOpen, setNotifOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -283,6 +284,37 @@ function TopBar({ active }: { active: NavKey }) {
         <button className="avatar-row">
           <span className="avatar">AP</span>
           <span className="role">Petugas</span>
+        </button>
+        <span className="tb-divider" />
+        <button
+          onClick={onLogout}
+          style={{
+            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+            fontSize: 11,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase' as const,
+            fontWeight: 700,
+            color: '#4b5563',
+            border: '1px solid #e5e7eb',
+            borderRadius: 4,
+            padding: '0 12px',
+            height: 32,
+            cursor: 'pointer',
+            background: '#fff',
+            transition: 'border-color 0.2s ease, color 0.2s ease',
+          }}
+          onMouseEnter={e => {
+            const b = e.currentTarget
+            b.style.borderColor = '#0a0a0a'
+            b.style.color = '#0a0a0a'
+          }}
+          onMouseLeave={e => {
+            const b = e.currentTarget
+            b.style.borderColor = '#e5e7eb'
+            b.style.color = '#4b5563'
+          }}
+        >
+          KELUAR
         </button>
       </div>
     </div>
@@ -723,9 +755,22 @@ function Placeholder({ title, meta, body }: { title: string; meta: string; body:
    PAGE — default export
    ============================================================ */
 export default function DashboardPage() {
+  const router = useRouter()
   const [active,   setActive]   = useState<NavKey>('dashboard')
   const [selected, setSelected] = useState<Report | null>(null)
   const [statuses, setStatuses] = useState<Record<string, Status>>({})
+
+  useEffect(() => {
+    const session = localStorage.getItem('sipeduli_admin')
+    if (!session) {
+      router.push('/admin/login')
+    }
+  }, [router])
+
+  const handleLogout = () => {
+    localStorage.removeItem('sipeduli_admin')
+    router.push('/admin/login')
+  }
 
   const updateStatus = (id: string, st: Status) => setStatuses(s => ({ ...s, [id]: st }))
   const currentStatus = selected ? (statuses[selected.id] ?? selected.status) : null
@@ -734,7 +779,7 @@ export default function DashboardPage() {
     <div className="app">
       <Sidebar active={active} onChange={setActive} />
       <div className="main">
-        <TopBar active={active} />
+        <TopBar active={active} onLogout={handleLogout} />
         {active === 'dashboard' && (
           <>
             <KPI />

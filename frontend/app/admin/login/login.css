@@ -1,0 +1,261 @@
+:root {
+  --ink: #0a0a0a;
+  --alert: #cc0000;
+  --g200: #e5e7eb;
+  --g400: #9ca3af;
+  --g500: #6b7280;
+  --g600: #4b5563;
+  --bg: #f4f4f5;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; font-weight: 400; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+@keyframes loginSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-8px); }
+  40%     { transform: translateX(8px); }
+  60%     { transform: translateX(-5px); }
+  80%     { transform: translateX(5px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Page shell ---- */
+.login-bg {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+/* ---- Logo above card ---- */
+.login-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  animation: loginSlideUp 0.5s cubic-bezier(.2,.7,.2,1) 0.1s both;
+}
+.login-logo-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.login-logo-box {
+  width: 32px;
+  height: 32px;
+  border: 1px dashed var(--ink);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.login-logo-name {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.login-logo-sub {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--g400);
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* ---- Card ---- */
+.login-card {
+  background: #fff;
+  border: 1px solid var(--g200);
+  border-radius: 4px;
+  max-width: 420px;
+  width: 100%;
+  padding: 36px;
+  animation: loginSlideUp 0.5s cubic-bezier(.2,.7,.2,1) both;
+}
+.login-card-tag {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--g500);
+  font-weight: 700;
+}
+.login-card-title {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--ink);
+  margin-top: 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+/* ---- Form fields ---- */
+.login-field {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.login-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--g500);
+  font-weight: 700;
+}
+.login-input {
+  width: 100%;
+  border: 1px solid var(--g200);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color 200ms ease;
+  outline: none;
+}
+.login-input:focus { border-color: var(--ink); }
+.login-input.pr  { padding-right: 48px; }
+
+/* ---- Password toggle ---- */
+.login-pw-wrap { position: relative; }
+.login-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--g400);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  border-radius: 4px;
+}
+.login-eye:hover { color: var(--ink); }
+
+/* ---- Error ---- */
+.login-error {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #b91c1c;
+  font-weight: 700;
+  margin-top: 16px;
+  animation: shake 0.4s ease both;
+}
+
+/* ---- Submit button ---- */
+.login-btn {
+  width: 100%;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 16px 24px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+.login-btn:hover:not(:disabled) { background: #000; }
+.login-btn:active:not(:disabled) { transform: translateY(1px); }
+.login-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.login-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ---- Demo credentials ---- */
+.login-demo {
+  border-top: 1px solid var(--g200);
+  margin-top: 20px;
+  padding-top: 20px;
+}
+.login-demo-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--g400);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.login-demo-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--g500);
+  flex-wrap: wrap;
+}
+.login-demo-sep { color: var(--g400); margin: 0 4px; }
+.login-demo-val {
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  border-bottom: 1px dashed var(--g400);
+  transition: color 0.15s ease, border-color 0.15s ease;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+.login-demo-val:hover { color: var(--alert); border-bottom-color: var(--alert); }
+
+/* ---- Page footer ---- */
+.login-footer {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--g400);
+  margin-top: 32px;
+  text-align: center;
+  animation: loginSlideUp 0.5s cubic-bezier(.2,.7,.2,1) 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
