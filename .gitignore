@@ -213,3 +213,48 @@ $RECYCLE.BIN/
 *.rej
 tmp/
 temp/
+
+# ───────────────────────────────────────────────────────────────
+#  CLAUDE CODE — TOKEN OPTIMIZATION
+#  File besar yang tidak perlu dibaca Claude Code saat /init
+# ───────────────────────────────────────────────────────────────
+# Lock files (bisa di-regenerate)
+package-lock.json
+yarn.lock
+poetry.lock
+
+# Font & binary assets
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.eot
+*.ico
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.mp4
+*.mp3
+
+# Notebook output (hanya baca source-nya, bukan output cell)
+# Kalau mau Claude baca notebook, hapus baris ini
+# *.ipynb
+
+# Compiled/generated
+*.min.js
+*.min.css
+*.map
+frontend/public/
+
+# Model & data (sudah ada di atas, pastikan path-nya benar)
+*.pkl
+*.joblib
+*.csv
+*.parquet
+mlruns/
+mlflow.db
+miflow.db
+logs.log
