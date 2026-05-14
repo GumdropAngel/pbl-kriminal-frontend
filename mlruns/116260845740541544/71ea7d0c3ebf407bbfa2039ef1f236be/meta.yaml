@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/71ea7d0c3ebf407bbfa2039ef1f236be/artifacts
+end_time: 1778723937782
+entry_point_name: ''
+experiment_id: '116260845740541544'
+lifecycle_stage: active
+run_id: 71ea7d0c3ebf407bbfa2039ef1f236be
+run_name: baseline_RidgeClassifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778723933133
+status: 3
+tags: []
+user_id: user

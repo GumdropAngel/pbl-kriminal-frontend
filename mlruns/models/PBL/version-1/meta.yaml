@@ -1,0 +1,16 @@
+creation_timestamp: 1778513055026
+current_stage: None
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1778513055026
+model_id: m-dd6c3c52cf174939b1e2c3a79a0c714e
+name: PBL
+run_id: 4bb0d5a7bc0441fdaa49688f5ba27230
+run_link: ''
+source: models:/m-dd6c3c52cf174939b1e2c3a79a0c714e
+status: READY
+status_message: null
+storage_location: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/models/m-dd6c3c52cf174939b1e2c3a79a0c714e/artifacts
+user_id: null
+version: 1
+workspace: default

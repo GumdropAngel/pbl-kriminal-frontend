@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/a24f146eef824a49b74a1dc813b36f70/artifacts
+end_time: 1778512785296
+entry_point_name: ''
+experiment_id: '116260845740541544'
+lifecycle_stage: active
+run_id: a24f146eef824a49b74a1dc813b36f70
+run_name: baseline_LinearSVC
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778512781499
+status: 3
+tags: []
+user_id: user

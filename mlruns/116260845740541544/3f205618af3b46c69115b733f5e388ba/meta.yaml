@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/3f205618af3b46c69115b733f5e388ba/artifacts
+end_time: 1778512426322
+entry_point_name: ''
+experiment_id: '116260845740541544'
+lifecycle_stage: active
+run_id: 3f205618af3b46c69115b733f5e388ba
+run_name: baseline_LGBMClassifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778512426251
+status: 4
+tags: []
+user_id: user

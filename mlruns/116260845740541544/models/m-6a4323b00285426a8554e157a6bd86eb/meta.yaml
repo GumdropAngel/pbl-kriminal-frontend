@@ -1,0 +1,10 @@
+artifact_location: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/models/m-6a4323b00285426a8554e157a6bd86eb/artifacts
+creation_timestamp: 1778723917054
+experiment_id: '116260845740541544'
+last_updated_timestamp: 1778723928334
+model_id: m-6a4323b00285426a8554e157a6bd86eb
+model_type: null
+name: model
+source_run_id: 454d576c4a1543fcbdf12bd831cbc1e3
+status: 2
+status_message: null

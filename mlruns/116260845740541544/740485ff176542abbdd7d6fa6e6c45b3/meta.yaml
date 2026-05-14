@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/user/Documents/Semester 4/MLOPS/PBL/mlruns/116260845740541544/740485ff176542abbdd7d6fa6e6c45b3/artifacts
+end_time: 1778730802335
+entry_point_name: ''
+experiment_id: '116260845740541544'
+lifecycle_stage: active
+run_id: 740485ff176542abbdd7d6fa6e6c45b3
+run_name: tuned_LGBMClassifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778730762446
+status: 3
+tags: []
+user_id: user
