@@ -7,7 +7,7 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if not DATABASE_URL:
-    raise ValueError("Waduh! DATABASE_URL tidak ditemukan di environment variables. Pastikan file .env sudah benar.")
+    raise ValueError("! DATABASE_URL tidak ditemukan di environment variables. Pastikan file .env sudah benar.")
 
 # 2. Membuat "Mesin" (Engine) Koneksi
 # Engine ini yang bertugas mengatur lalu lintas ketukan pintu ke Supabase
