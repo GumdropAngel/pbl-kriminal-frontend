@@ -29,7 +29,7 @@ function useReveal(options: RevealOptions = {}): [React.RefObject<HTMLDivElement
     return () => obs.disconnect()
   }, [shown, options.threshold, options.rootMargin])
 
-  return [ref, shown]
+  return [ref as any, shown]
 }
 
 interface CountUpOptions {
